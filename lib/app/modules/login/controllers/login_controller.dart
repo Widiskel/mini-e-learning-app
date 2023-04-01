@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mini_e_learning/app/data/models/user_model.dart';
-import 'package:mini_e_learning/app/data/repository/user/user_repository.dart';
+import 'package:mini_e_learning/app/data/repository/user_repository.dart';
 import 'package:mini_e_learning/app/data/services/firebase_service.dart';
 import 'package:mini_e_learning/app/widget/snackbar_widget.dart';
 
@@ -17,19 +18,23 @@ class LoginController extends GetxController {
     try {
       await firebase.signInWithGoogle();
       await isUserRegistered();
-    } catch (e) {
-      ErrorSnack.show(message: 'Terjadi Kesalahan');
+    } on PlatformException catch (e) {
+      ErrorSnack.show(message: e.message.toString());
     }
   }
 
   Future<void> isUserRegistered() async {
     final String? email = FirebaseAuth.instance.currentUser?.email;
     if (email != null) {
-      final UserModel? userData = await userRepository.getUserByEmail(email);
-      if (userData != null) {
-        Get.toNamed(Routes.dashboard);
-      } else {
-        Get.toNamed(Routes.biodata);
+      try {
+        final UserModel? userData = await userRepository.getUserByEmail(email);
+        if (userData != null) {
+          Get.toNamed(Routes.dashboard, arguments: userData);
+        } else {
+          Get.toNamed(Routes.biodata);
+        }
+      } catch (e) {
+        ErrorSnack.show(message: 'Terjadi Kesalahan');
       }
     } else {
       Get.offAllNamed(Routes.login);

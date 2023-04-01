@@ -1,7 +1,7 @@
 import 'package:mini_e_learning/app/data/models/user_model.dart';
 import 'package:mini_e_learning/app/data/models/user_regis_model.dart';
 import 'package:mini_e_learning/app/data/utils/app_constant.dart';
-import '../../services/dio_client.dart';
+import '../services/dio_client.dart';
 
 abstract class UserRepository {
   Future<UserModel?> getUserByEmail(String email);

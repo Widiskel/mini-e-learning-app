@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/dashboard/page/Home/views/home_view.dart';
+import '../modules/dashboard/page/Profile/views/profile_view.dart';
 import '../modules/biodata/bindings/biodata_binding.dart';
 import '../modules/biodata/views/biodata_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
@@ -33,6 +35,14 @@ class AppPages {
       name: _Paths.biodata,
       page: () => const BiodataView(),
       binding: BiodataBinding(),
+    ),
+    GetPage(
+      name: _Paths.home,
+      page: () => const HomeView(),
+    ),
+    GetPage(
+      name: _Paths.profile,
+      page: () => const ProfileView(),
     ),
   ];
 }
