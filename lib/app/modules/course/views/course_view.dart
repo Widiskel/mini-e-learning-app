@@ -49,9 +49,13 @@ class CourseView extends GetView<HomeController> {
                 );
               } else {
                 return const Center(
-                  child: CircularProgressIndicator(
-                    color: ColorPallete.bgColor,
-                    strokeWidth: 10,
+                  child: SizedBox(
+                    width: 200,
+                    height: 200,
+                    child: CircularProgressIndicator(
+                      color: ColorPallete.bgColor,
+                      strokeWidth: 10,
+                    ),
                   ),
                 );
               }

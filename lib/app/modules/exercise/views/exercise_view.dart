@@ -46,9 +46,13 @@ class ExerciseView extends GetView<ExerciseController> {
             controller.isLoading
                 ? const Expanded(
                     child: Center(
-                      child: CircularProgressIndicator(
-                        color: ColorPallete.bgColor,
-                        strokeWidth: 10,
+                      child: SizedBox(
+                        width: 200,
+                        height: 200,
+                        child: CircularProgressIndicator(
+                          color: ColorPallete.bgColor,
+                          strokeWidth: 10,
+                        ),
                       ),
                     ),
                   )
