@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_e_learning/app/widget/course_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../data/utils/color_pallete.dart';
 import '../controllers/home_controller.dart';
@@ -176,9 +179,17 @@ class HomeView extends GetView<HomeController> {
                                     ),
                                   ),
                                   child: ClipRRect(
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(8.0),
-                                      ),
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(8.0),
+                                    ),
+                                    child: GestureDetector(
+                                      onTap: () async {
+                                        if (banner.eventId != null) {
+                                          log('Launch Url');
+                                          launchUrl(
+                                              Uri.parse(banner.eventUrl!));
+                                        }
+                                      },
                                       child: FadeInImage(
                                         placeholder: const AssetImage(
                                             'assets/img/placeholder.png'),
@@ -191,7 +202,9 @@ class HomeView extends GetView<HomeController> {
                                           );
                                         },
                                         fit: BoxFit.cover,
-                                      )),
+                                      ),
+                                    ),
+                                  ),
                                 );
                               },
                             );
