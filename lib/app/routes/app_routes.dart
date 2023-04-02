@@ -9,6 +9,9 @@ abstract class Routes {
   static const biodata = _Paths.biodata;
   static const home = _Paths.home;
   static const profile = _Paths.profile;
+  static const course = _Paths.course;
+  static const exercise = _Paths.exercise;
+  static const question = _Paths.question;
 }
 
 abstract class _Paths {
@@ -20,4 +23,7 @@ abstract class _Paths {
   static const biodata = '/biodata';
   static const home = '/home';
   static const profile = '/profile';
+  static const course = '/course';
+  static const exercise = '/exercise';
+  static const question = '/question';
 }

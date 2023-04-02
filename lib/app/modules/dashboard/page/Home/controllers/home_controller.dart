@@ -22,11 +22,7 @@ class HomeController extends GetxController {
 
   UserModel userData = Get.arguments;
   List<CourseList> courseList = [];
-  List<BannerList> bannerList = [
-    BannerList(eventImage: 'assets/img/placeholder.png'),
-    BannerList(eventImage: 'assets/img/placeholder.png'),
-    BannerList(eventImage: 'assets/img/placeholder.png'),
-  ];
+  List<BannerList> bannerList = [];
 
   Future<void> getCourseList() async {
     try {
@@ -34,8 +30,8 @@ class HomeController extends GetxController {
       update();
       CourseListModel? courseData =
           await courseRepo.getCourse('IPA', userData.data!.userEmail!);
-      if (courseData?.data != null) {
-        courseList = courseData!.data!;
+      if (courseData != null) {
+        courseList = courseData.data!;
         update();
       } else {
         ErrorSnack.show(message: 'Terjadi Kesalahan');
@@ -48,8 +44,8 @@ class HomeController extends GetxController {
   Future<void> getBannerList() async {
     try {
       BannerListModel? bannerData = await bannerRepo.getBanner();
-      if (bannerData?.data != null) {
-        bannerList = bannerData!.data!;
+      if (bannerData != null) {
+        bannerList = bannerData.data!;
         update();
       } else {
         ErrorSnack.show(message: 'Terjadi Kesalahan');

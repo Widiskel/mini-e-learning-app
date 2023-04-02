@@ -5,8 +5,10 @@ class AppConstant {
   static const getUserByEmail = 'users';
   static const registerUser = '$getUserByEmail/registrasi';
 
+  static const String bannerList = 'event/list';
+
   static const String exercise = '/exercise';
   static const String courseList = '$exercise/data_course';
-
-  static const String bannerList = 'event/list';
+  static const String exerciseList = '$exercise/data_exercise';
+  static const String questionList = '$exercise/kerjakan';
 }

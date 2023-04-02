@@ -1,13 +1,18 @@
 import 'package:get/get.dart';
 
-import '../modules/dashboard/page/Home/views/home_view.dart';
-import '../modules/dashboard/page/Profile/views/profile_view.dart';
 import '../modules/biodata/bindings/biodata_binding.dart';
 import '../modules/biodata/views/biodata_view.dart';
+import '../modules/course/views/course_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
+import '../modules/dashboard/page/Home/views/home_view.dart';
+import '../modules/dashboard/page/Profile/views/profile_view.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
+import '../modules/exercise/bindings/exercise_binding.dart';
+import '../modules/exercise/views/exercise_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/question/bindings/question_binding.dart';
+import '../modules/question/views/question_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 
@@ -43,6 +48,20 @@ class AppPages {
     GetPage(
       name: _Paths.profile,
       page: () => const ProfileView(),
+    ),
+    GetPage(
+      name: _Paths.course,
+      page: () => const CourseView(),
+    ),
+    GetPage(
+      name: _Paths.exercise,
+      page: () => const ExerciseView(),
+      binding: ExerciseBinding(),
+    ),
+    GetPage(
+      name: _Paths.question,
+      page: () => const QuestionView(),
+      binding: QuestionBinding(),
     ),
   ];
 }

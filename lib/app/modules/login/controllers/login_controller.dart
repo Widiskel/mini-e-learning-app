@@ -29,9 +29,9 @@ class LoginController extends GetxController {
       try {
         final UserModel? userData = await userRepository.getUserByEmail(email);
         if (userData != null) {
-          Get.toNamed(Routes.dashboard, arguments: userData);
+          Get.offAllNamed(Routes.dashboard, arguments: userData);
         } else {
-          Get.toNamed(Routes.biodata);
+          Get.offAllNamed(Routes.biodata);
         }
       } catch (e) {
         ErrorSnack.show(message: 'Terjadi Kesalahan');

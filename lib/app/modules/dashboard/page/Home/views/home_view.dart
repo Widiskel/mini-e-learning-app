@@ -9,6 +9,7 @@ import 'package:mini_e_learning/app/widget/course_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../data/utils/color_pallete.dart';
+import '../../../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -106,25 +107,29 @@ class HomeView extends GetView<HomeController> {
                         ),
                       ),
                       Padding(
-                          padding: const EdgeInsets.only(
-                              left: 20, right: 20, top: 25, bottom: 20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Pilih Pelajaran',
-                                style: GoogleFonts.poppins(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                        padding: const EdgeInsets.only(
+                            left: 20, right: 20, top: 25, bottom: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Pilih Pelajaran',
+                              style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
                               ),
-                              Text(
+                            ),
+                            GestureDetector(
+                              onTap: () => Get.toNamed(Routes.course),
+                              child: Text(
                                 'Lihat Semua',
                                 style: GoogleFonts.poppins(
                                     fontSize: 10, color: ColorPallete.bgColor),
                               ),
-                            ],
-                          )),
+                            ),
+                          ],
+                        ),
+                      ),
                       Expanded(
                         child: ListView.builder(
                           itemCount: controller.courseList.length,
@@ -136,10 +141,20 @@ class HomeView extends GetView<HomeController> {
                                 materi:
                                     controller.courseList[index].jumlahMateri!,
                                 done: controller.courseList[index].jumlahDone!,
+                                route: Routes.exercise,
+                                argument: {
+                                  "courseId":
+                                      controller.courseList[index].courseId,
+                                  "email": controller.userData.data?.userEmail!,
+                                  "title":
+                                      controller.courseList[index].courseName,
+                                },
                               );
                             } else {
                               return const Center(
-                                child: CircularProgressIndicator(),
+                                child: CircularProgressIndicator(
+                                  color: ColorPallete.bgColor,
+                                ),
                               );
                             }
                           },
@@ -212,7 +227,7 @@ class HomeView extends GetView<HomeController> {
                         );
                       }),
                       const SizedBox(
-                        height: 10.0,
+                        height: 20.0,
                       ),
                     ],
                   ),

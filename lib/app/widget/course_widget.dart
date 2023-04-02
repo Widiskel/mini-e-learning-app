@@ -10,6 +10,7 @@ class CourseWidget extends StatelessWidget {
   final int? materi;
   final int done;
   final String? route;
+  final Map<String, dynamic>? argument;
 
   const CourseWidget({
     super.key,
@@ -18,6 +19,7 @@ class CourseWidget extends StatelessWidget {
     required this.materi,
     this.done = 0,
     this.route,
+    this.argument,
   });
 
   @override
@@ -42,7 +44,8 @@ class CourseWidget extends StatelessWidget {
             borderRadius: const BorderRadius.all(
               Radius.circular(12.0),
             ),
-            onTap: () => route != null ? Get.toNamed(route!) : '',
+            onTap: () =>
+                route != null ? Get.toNamed(route!, arguments: argument) : '',
             splashColor: ColorPallete.bgColor,
             hoverColor: Colors.white,
             child: Row(
@@ -65,6 +68,7 @@ class CourseWidget extends StatelessWidget {
                         if (loadingProgress == null) return child;
                         return Center(
                           child: CircularProgressIndicator(
+                            color: ColorPallete.bgColor,
                             value: loadingProgress.expectedTotalBytes != null
                                 ? loadingProgress.cumulativeBytesLoaded /
                                     loadingProgress.expectedTotalBytes!
