@@ -23,6 +23,7 @@ class ExerciseController extends GetxController {
 
   Future<void> getExercise() async {
     isLoading = true;
+    update();
     try {
       Exercise? exercise = await exerciseRepo.getExercise(courseId, email);
       if (exercise != null) {

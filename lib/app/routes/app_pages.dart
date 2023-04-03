@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mini_e_learning/app/modules/dashboard/page/Profile/views/edit_profile_view.dart';
 
 import '../modules/biodata/bindings/biodata_binding.dart';
 import '../modules/biodata/views/biodata_view.dart';
@@ -48,6 +49,10 @@ class AppPages {
     GetPage(
       name: _Paths.profile,
       page: () => const ProfileView(),
+    ),
+    GetPage(
+      name: _Paths.editProfile,
+      page: () => const EditProfileView(),
     ),
     GetPage(
       name: _Paths.course,

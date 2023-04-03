@@ -10,6 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../data/utils/color_pallete.dart';
 import '../../../../../routes/app_pages.dart';
+import '../../../../../widget/list_view_shimmer.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -134,28 +135,40 @@ class HomeView extends GetView<HomeController> {
                         child: ListView.builder(
                           itemCount: controller.courseList.length,
                           itemBuilder: (context, index) {
-                            if (controller.courseList.isNotEmpty) {
-                              return CourseWidget(
-                                leading: controller.courseList[index].urlCover!,
-                                title: controller.courseList[index].courseName!,
-                                materi:
-                                    controller.courseList[index].jumlahMateri!,
-                                done: controller.courseList[index].jumlahDone!,
-                                route: Routes.exercise,
-                                argument: {
-                                  "courseId":
-                                      controller.courseList[index].courseId,
-                                  "email": controller.userData.data?.userEmail!,
-                                  "title":
-                                      controller.courseList[index].courseName,
-                                },
-                              );
+                            if (controller.isLoading) {
+                              return const MyListViewShimmer();
                             } else {
-                              return const Center(
-                                child: CircularProgressIndicator(
-                                  color: ColorPallete.bgColor,
-                                ),
-                              );
+                              if (controller.courseList.isNotEmpty) {
+                                return CourseWidget(
+                                  leading:
+                                      controller.courseList[index].urlCover!,
+                                  title:
+                                      controller.courseList[index].courseName!,
+                                  materi: controller
+                                      .courseList[index].jumlahMateri!,
+                                  done:
+                                      controller.courseList[index].jumlahDone!,
+                                  route: Routes.exercise,
+                                  argument: {
+                                    "courseId":
+                                        controller.courseList[index].courseId,
+                                    "email":
+                                        controller.userData.data?.userEmail!,
+                                    "title":
+                                        controller.courseList[index].courseName,
+                                  },
+                                );
+                              } else {
+                                return Center(
+                                  child: Text(
+                                    "Saat ini tidak ada pelajaran tersedia",
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                );
+                              }
                             }
                           },
                         ),

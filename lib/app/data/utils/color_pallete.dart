@@ -7,4 +7,5 @@ class ColorPallete {
   static const strokeGreen = Color(0xff01B1AF);
   static const iconBg = Color(0xffF3F7F8);
   static const subTitle = Color(0xff8E8E8E);
+  static const answerBorder = Color(0xffC9C9C9);
 }

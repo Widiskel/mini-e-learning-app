@@ -23,20 +23,24 @@ class HomeController extends GetxController {
   UserModel userData = Get.arguments;
   List<CourseList> courseList = [];
   List<BannerList> bannerList = [];
+  bool isLoading = true;
 
   Future<void> getCourseList() async {
+    isLoading = true;
+    update();
     try {
-      courseList = [];
-      update();
       CourseListModel? courseData =
           await courseRepo.getCourse('IPA', userData.data!.userEmail!);
       if (courseData != null) {
         courseList = courseData.data!;
-        update();
       } else {
         ErrorSnack.show(message: 'Terjadi Kesalahan');
       }
+      isLoading = false;
+      update();
     } catch (e) {
+      isLoading = false;
+      update();
       ErrorSnack.show(message: 'Terjadi Kesalahan');
     }
   }
