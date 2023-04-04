@@ -1,13 +1,15 @@
 import 'package:get/get.dart';
-import 'package:mini_e_learning/app/modules/dashboard/page/Profile/views/edit_profile_view.dart';
+import 'package:mini_e_learning/app/modules/question/views/result_view.dart';
 
 import '../modules/biodata/bindings/biodata_binding.dart';
 import '../modules/biodata/views/biodata_view.dart';
 import '../modules/course/views/course_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/page/Home/views/home_view.dart';
+import '../modules/dashboard/page/Profile/views/edit_profile_view.dart';
 import '../modules/dashboard/page/Profile/views/profile_view.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
+import '../modules/dashboard/page/discus/views/discus_view.dart';
 import '../modules/exercise/bindings/exercise_binding.dart';
 import '../modules/exercise/views/exercise_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -67,6 +69,14 @@ class AppPages {
       name: _Paths.question,
       page: () => const QuestionView(),
       binding: QuestionBinding(),
+    ),
+    GetPage(
+      name: _Paths.discus,
+      page: () => const DiscusView(),
+    ),
+    GetPage(
+      name: _Paths.result,
+      page: () => const ResultView(),
     ),
   ];
 }

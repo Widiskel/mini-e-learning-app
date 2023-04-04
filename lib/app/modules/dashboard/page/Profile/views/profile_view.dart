@@ -106,11 +106,11 @@ class ProfileView extends GetView<ProfileController> {
                               ),
                               child: FadeInImage(
                                 placeholder:
-                                    AssetImage('assets/images/avatar.png'),
+                                    AssetImage('assets/img/avatar.png'),
+                                fit: BoxFit.contain,
                                 imageErrorBuilder: (BuildContext context,
                                     Object exception, StackTrace? stackTrace) {
-                                  return Image.asset(
-                                      'assets/images/avatar.png');
+                                  return Image.asset('assets/img/avatar.png');
                                 },
                                 image: NetworkImage(
                                   controller.userData.data!.userFoto!,

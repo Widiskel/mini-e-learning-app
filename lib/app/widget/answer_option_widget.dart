@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:mini_e_learning/app/data/utils/color_pallete.dart';
@@ -23,7 +25,13 @@ class AnswerWidget extends StatelessWidget {
       onTap: () {
         controller.selectedOption = option;
         controller.answerList[controller.currentQuestionIndex] = (option);
-        controller.answeredQuestion.add(controller.currentQuestionIndex);
+        if (!controller.answeredQuestion
+            .contains(controller.currentQuestionIndex)) {
+          controller.answeredQuestion.add(controller.currentQuestionIndex);
+        }
+        log('daftar banksoal : ${controller.questionBankList}');
+        log('daftar jawaban : ${controller.answerList}');
+        log('daftar soal sudah dijawab : ${controller.answeredQuestion}');
         controller.update();
       },
       child: Container(
@@ -59,8 +67,6 @@ class AnswerWidget extends StatelessWidget {
                   questionImg != null
                       ? Image.network(
                           questionImg,
-                          width: 200.0,
-                          height: 200.0,
                           fit: BoxFit.cover,
                         )
                       : const Center()

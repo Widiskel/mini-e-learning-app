@@ -13,6 +13,8 @@ abstract class Routes {
   static const course = _Paths.course;
   static const exercise = _Paths.exercise;
   static const question = _Paths.question;
+  static const discus = _Paths.discus;
+  static const result = _Paths.result;
 }
 
 abstract class _Paths {
@@ -28,4 +30,6 @@ abstract class _Paths {
   static const course = '/course';
   static const exercise = '/exercise';
   static const question = '/question';
+  static const discus = '/discus';
+  static const result = '/result';
 }

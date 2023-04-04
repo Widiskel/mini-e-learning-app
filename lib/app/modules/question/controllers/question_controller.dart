@@ -2,8 +2,11 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:mini_e_learning/app/data/models/question_list_model.dart';
+import 'package:mini_e_learning/app/data/models/result_model.dart';
 import 'package:mini_e_learning/app/data/repository/exercise_repository.dart';
 import 'package:mini_e_learning/app/widget/snackbar_widget.dart';
+
+import '../../../routes/app_pages.dart';
 
 class QuestionController extends GetxController {
   final ExerciseRepository exerciseRepo;
@@ -20,6 +23,7 @@ class QuestionController extends GetxController {
   List<String> questionBankList = [];
   List<String> answerList = [];
   List<QuestionList> questionList = [];
+  String score = '0';
 
   @override
   void onInit() async {
@@ -50,6 +54,42 @@ class QuestionController extends GetxController {
       isLoading = false;
       update();
     } catch (e) {
+      isLoading = false;
+      update();
+      ErrorSnack.show(message: 'Terjadi Kesalahan');
+    }
+  }
+
+  Future<void> submit() async {
+    isLoading = true;
+    Get.back();
+    update();
+    try {
+      var body = {
+        "user_email": email,
+        "exercise_id": exerciseId,
+        "bank_question_id": questionBankList,
+        "student_answer": answerList
+      };
+      var submit = await exerciseRepo.submitExercise(body);
+      if (submit != null) {
+        SuccessSnack.show(message: 'Terima kasih!!!');
+        ResultModel? result = await exerciseRepo.getResult(exerciseId, email);
+
+        if (result != null) {
+          score = result.data!.result!.jumlahScore.toString();
+          Get.toNamed(Routes.result);
+          update();
+          await Future.delayed(const Duration(seconds: 3));
+          Get.back();
+          Get.back();
+          update();
+        }
+      }
+      isLoading = false;
+      update();
+    } catch (e) {
+      log(e.toString());
       isLoading = false;
       update();
       ErrorSnack.show(message: 'Terjadi Kesalahan');

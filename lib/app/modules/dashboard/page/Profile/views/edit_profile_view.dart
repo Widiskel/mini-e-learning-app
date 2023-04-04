@@ -23,82 +23,93 @@ class EditProfileView extends GetView<ProfileController> {
         ),
         centerTitle: true,
       ),
-      body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20),
-        child: GetBuilder<ProfileController>(
-          builder: (controller) {
-            return Form(
-              key: controller.formKey,
-              child: ListView(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height: 25.0,
-                      ),
-                      Text(
-                        'Data Diri',
-                        style: GoogleFonts.poppins(
-                            fontSize: 20, fontWeight: FontWeight.w400),
-                      ),
-                      const SizedBox(
-                        height: 16.0,
-                      ),
-                      EditFormInput(
-                        label: 'Nama Lengkap',
-                        controller: controller.nameTextController,
-                      ),
-                      EditFormInput(
-                        label: 'Email',
-                        controller: controller.emailTextController,
-                        enabled: false,
-                      ),
-                      EditFormInput(
-                        label: 'Jenis Kelamin',
-                        controller: controller.kelaminTextController,
-                        enabled: false,
-                      ),
-                      EditFormInput(
-                        label: 'Kelas',
-                        controller: controller.kelasTextController,
-                      ),
-                      EditFormInput(
-                        label: 'Sekolah',
-                        controller: controller.sekolahTextController,
-                      ),
-                      const SizedBox(
-                        height: 30.0,
-                      ),
-                      Container(
-                        height: 50,
-                        width: Get.width,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(12.0),
-                          ),
-                        ),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: ColorPallete.bgColor,
-                          ),
-                          onPressed: () {},
-                          child: Text(
-                            "Perbarui Data",
-                            style: GoogleFonts.poppins(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w800,
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            child: Container(
+              width: Get.width,
+              height: Get.height,
+              margin: const EdgeInsets.only(left: 20, right: 20),
+              child: GetBuilder<ProfileController>(
+                builder: (controller) {
+                  return Form(
+                    key: controller.formKey,
+                    child: ListView(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              height: 25.0,
                             ),
-                          ),
+                            Text(
+                              'Data Diri',
+                              style: GoogleFonts.poppins(
+                                  fontSize: 20, fontWeight: FontWeight.w400),
+                            ),
+                            const SizedBox(
+                              height: 16.0,
+                            ),
+                            EditFormInput(
+                              label: 'Nama Lengkap',
+                              controller: controller.nameTextController,
+                            ),
+                            EditFormInput(
+                              label: 'Email',
+                              controller: controller.emailTextController,
+                              enabled: false,
+                            ),
+                            EditFormInput(
+                              label: 'Jenis Kelamin',
+                              controller: controller.kelaminTextController,
+                              enabled: false,
+                            ),
+                            EditFormInput(
+                              label: 'Kelas',
+                              controller: controller.kelasTextController,
+                            ),
+                            EditFormInput(
+                              label: 'Sekolah',
+                              controller: controller.sekolahTextController,
+                            ),
+                            const SizedBox(
+                              height: 30.0,
+                            ),
+                            Container(
+                              height: 50,
+                              width: Get.width,
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(12.0),
+                                ),
+                              ),
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: ColorPallete.bgColor,
+                                ),
+                                onPressed: () async {
+                                  await controller.updateUser();
+                                },
+                                child: Text(
+                                  "Perbarui Data",
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  );
+                },
               ),
-            );
-          },
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -57,6 +58,7 @@ class DioClientImpl implements DioClient {
       final response = await _dio.post(url, data: body);
       return response.data;
     } on DioError catch (e) {
+      log(e.toString());
       if (e.response?.data != null) throw Exception(e.response?.data);
 
       throw Exception(e.message);

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
@@ -221,16 +223,178 @@ class QuestionView extends GetView<QuestionController> {
                                 ),
                               ),
                               child: ElevatedButton(
-                                onPressed: () {
-                                  controller.answeredQuestion
-                                      .add(controller.currentQuestionIndex);
-                                  controller.currentQuestionIndex += 1;
-                                  controller.update();
+                                onPressed: () async {
+                                  if (controller.answerList.length ==
+                                          controller.questionLength &&
+                                      !controller.answerList.contains('')) {
+                                    return showModalBottomSheet(
+                                      context: context,
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.vertical(
+                                          top: Radius.circular(12.0),
+                                        ),
+                                      ),
+                                      builder: (BuildContext context) {
+                                        return Wrap(children: [
+                                          Container(
+                                            decoration: const BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.vertical(
+                                                top: Radius.circular(12.0),
+                                              ),
+                                            ),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                const SizedBox(
+                                                  height: 10.0,
+                                                ),
+                                                Container(
+                                                  height: 6,
+                                                  width: Get.width * 0.3,
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                    color: ColorPallete
+                                                        .bgColorForm,
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(12.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  height: 22.0,
+                                                ),
+                                                Image.asset(
+                                                  'assets/img/submit.png',
+                                                  width: 290,
+                                                  height: 120.0,
+                                                ),
+                                                const SizedBox(
+                                                  height: 8.0,
+                                                ),
+                                                Text(
+                                                  'Kumpulkan latihan soal sekarang?',
+                                                  style: GoogleFonts.poppins(
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.w700),
+                                                ),
+                                                Text(
+                                                  'Boleh langsung kumpulin dong',
+                                                  style: GoogleFonts.poppins(
+                                                      color:
+                                                          ColorPallete.subTitle,
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
+                                                const SizedBox(height: 20.0),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    SizedBox(
+                                                      width: 125,
+                                                      child: ElevatedButton(
+                                                        onPressed: () {
+                                                          Get.back();
+                                                        },
+                                                        style: ElevatedButton
+                                                            .styleFrom(
+                                                          backgroundColor:
+                                                              Colors.white,
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            side: const BorderSide(
+                                                                color:
+                                                                    ColorPallete
+                                                                        .bgColor,
+                                                                width: 1,
+                                                                style:
+                                                                    BorderStyle
+                                                                        .solid),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12.0),
+                                                          ),
+                                                        ),
+                                                        child: Text(
+                                                          'Nanti dulu',
+                                                          style: GoogleFonts.poppins(
+                                                              color:
+                                                                  ColorPallete
+                                                                      .bgColor,
+                                                              fontSize: 12,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 15.0,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 125,
+                                                      child: ElevatedButton(
+                                                        onPressed: () {
+                                                          controller.submit();
+                                                        },
+                                                        style: ElevatedButton
+                                                            .styleFrom(
+                                                          backgroundColor:
+                                                              ColorPallete
+                                                                  .bgColor,
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12.0),
+                                                          ),
+                                                        ),
+                                                        child: Text(
+                                                          'Ya',
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize: 12,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  height: 40.0,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ]);
+                                      },
+                                    );
+                                  } else {
+                                    controller.answeredQuestion
+                                        .add(controller.currentQuestionIndex);
+                                    controller.currentQuestionIndex += 1;
+                                    controller.update();
+                                  }
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: ColorPallete.bgColor),
-                                child: controller.currentQuestionIndex ==
-                                        controller.questionLength - 1
+                                child: controller.answerList.length ==
+                                            controller.questionLength &&
+                                        !controller.answerList.contains('')
                                     ? Text(
                                         'Kumpulkan',
                                         style: GoogleFonts.poppins(

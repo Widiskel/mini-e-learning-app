@@ -131,48 +131,50 @@ class HomeView extends GetView<HomeController> {
                           ],
                         ),
                       ),
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: controller.courseList.length,
-                          itemBuilder: (context, index) {
-                            if (controller.isLoading) {
-                              return const MyListViewShimmer();
-                            } else {
-                              if (controller.courseList.isNotEmpty) {
-                                return CourseWidget(
-                                  leading:
-                                      controller.courseList[index].urlCover!,
-                                  title:
-                                      controller.courseList[index].courseName!,
-                                  materi: controller
-                                      .courseList[index].jumlahMateri!,
-                                  done:
-                                      controller.courseList[index].jumlahDone!,
-                                  route: Routes.exercise,
-                                  argument: {
-                                    "courseId":
-                                        controller.courseList[index].courseId,
-                                    "email":
-                                        controller.userData.data?.userEmail!,
-                                    "title":
-                                        controller.courseList[index].courseName,
-                                  },
-                                );
-                              } else {
-                                return Center(
-                                  child: Text(
-                                    "Saat ini tidak ada pelajaran tersedia",
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                );
-                              }
-                            }
-                          },
-                        ),
-                      ),
+                      controller.isLoading
+                          ? const Expanded(child: MyListViewShimmer())
+                          : Expanded(
+                              child: ListView.builder(
+                                itemCount: controller.courseList.length,
+                                itemBuilder: (context, index) {
+                                  if (controller.isLoading) {
+                                    return const MyListViewShimmer();
+                                  } else {
+                                    if (controller.courseList.isNotEmpty) {
+                                      return CourseWidget(
+                                        leading: controller
+                                            .courseList[index].urlCover!,
+                                        title: controller
+                                            .courseList[index].courseName!,
+                                        materi: controller
+                                            .courseList[index].jumlahMateri!,
+                                        done: controller
+                                            .courseList[index].jumlahDone!,
+                                        route: Routes.exercise,
+                                        argument: {
+                                          "courseId": controller
+                                              .courseList[index].courseId,
+                                          "email": controller
+                                              .userData.data?.userEmail!,
+                                          "title": controller
+                                              .courseList[index].courseName,
+                                        },
+                                      );
+                                    } else {
+                                      return Center(
+                                        child: Text(
+                                          "Saat ini tidak ada pelajaran tersedia",
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                  }
+                                },
+                              ),
+                            ),
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Padding(
