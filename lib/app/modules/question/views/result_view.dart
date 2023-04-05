@@ -33,8 +33,8 @@ class ResultView extends GetView<QuestionController> {
               fontWeight: FontWeight.w400,
             ),
           ),
-          const SizedBox(
-            height: 36.0,
+          SizedBox(
+            height: 36.0.h,
           ),
           const Image(image: AssetImage('assets/img/done.png')),
           Text(

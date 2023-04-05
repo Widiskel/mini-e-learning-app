@@ -14,12 +14,12 @@ class MyListViewShimmer extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.0.w),
           child: Container(
             width: ScreenUtil().screenWidth,
-            height: 115.h,
+            height: 95.h,
             margin: EdgeInsets.only(bottom: 10.h),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(
-                Radius.circular(12.0),
+                Radius.circular(12.0.r),
               ),
             ),
           ),
@@ -37,19 +37,19 @@ class MyListViewShimmer extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.only(left: 20.w),
-                    height: 55.h,
-                    width: 55.w,
-                    decoration: const BoxDecoration(
+                    height: 50.h,
+                    width: 50.h,
+                    decoration: BoxDecoration(
                       color: ColorPallete.iconBg,
                       borderRadius: BorderRadius.all(
-                        Radius.circular(12.0),
+                        Radius.circular(12.0.r),
                       ),
                     ),
                   ),
                   Expanded(
                     child: Padding(
                       padding:
-                          EdgeInsets.only(top: 18.h, left: 18.w, right: 18.w),
+                          EdgeInsets.only(top: 10.h, left: 18.w, right: 18.w),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -59,7 +59,7 @@ class MyListViewShimmer extends StatelessWidget {
                             color: Colors.white,
                           ),
                           SizedBox(
-                            height: 5.0.h,
+                            height: 10.0.h,
                           ),
                           Container(
                             width: 141.w,
@@ -67,11 +67,11 @@ class MyListViewShimmer extends StatelessWidget {
                             color: Colors.white,
                           ),
                           SizedBox(
-                            height: 10.0.h,
+                            height: 13.0.h,
                           ),
                           Container(
                             width: 218.w,
-                            height: 10.h,
+                            height: 15.h,
                             color: Colors.white,
                           ),
                         ],

@@ -29,21 +29,21 @@ class CourseWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20.0.w),
       child: Container(
         width: ScreenUtil().screenWidth,
-        height: 115.h,
+        height: 95.h,
         margin: EdgeInsets.only(bottom: 10.h),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(
-            Radius.circular(12.0),
+            Radius.circular(12.0.r),
           ),
         ),
         child: Material(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(12.0),
+          borderRadius: BorderRadius.all(
+            Radius.circular(12.0.r),
           ),
           child: InkWell(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(12.0),
+            borderRadius: BorderRadius.all(
+              Radius.circular(12.0.r),
             ),
             onTap: () =>
                 route != null ? Get.toNamed(route!, arguments: argument) : '',
@@ -53,12 +53,12 @@ class CourseWidget extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.only(left: 20.w),
-                  height: 55.h,
-                  width: 55.w,
-                  decoration: const BoxDecoration(
+                  height: 50.h,
+                  width: 50.h,
+                  decoration: BoxDecoration(
                     color: ColorPallete.iconBg,
                     borderRadius: BorderRadius.all(
-                      Radius.circular(12.0),
+                      Radius.circular(12.0.r.r),
                     ),
                   ),
                   child: Center(
@@ -90,12 +90,14 @@ class CourseWidget extends StatelessWidget {
                 ),
                 Expanded(
                     child: Padding(
-                  padding: EdgeInsets.only(top: 18.h, left: 18.w, right: 18.w),
+                  padding: EdgeInsets.only(top: 10.h, left: 18.w, right: 18.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         title,
+                        maxLines: 1,
+                        overflow: TextOverflow.fade,
                         style: GoogleFonts.poppins(
                           fontSize: 12,
                           fontWeight: FontWeight.w700,
