@@ -38,9 +38,11 @@ This is mini e learning application
 -  cloud_firestore: ^4.5.0
 -  timeago: ^3.3.0
 -  flutter_screenutil: ^5.7.0
+-  flutter_native_splash: ^2.2.18
+-  flutter_launcher_icons: ^0.12.0
 
 ### Any good think you want to do ?
 
-- You can create a feature that allows users to pick a file from the chat/discussion page and store it on Firestore.
-- Same with above, you can add a feature on the profile edit page that allows users to pick a file and store it on Firestore.
+- You can create a feature that allows users to pick a file from the chat/discussion page and store it on Firestore & Firebase Storage.
+- Same with above, you can add a feature on the profile edit page that allows users to pick a file and store it on Firestore & Firebase Storage.
 - You can also add a page or feature for users to review their answers and the explanations for exercises.

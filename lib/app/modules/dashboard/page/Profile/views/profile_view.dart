@@ -257,7 +257,8 @@ class ProfileView extends GetView<ProfileController> {
                             child: Container(
                               width: ScreenUtil().screenWidth,
                               height: 50.h,
-                              margin: EdgeInsets.only(left: 16.w, top: 10.h),
+                              margin: EdgeInsets.only(
+                                  left: 16.w, top: 10.h, right: 16.w),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 boxShadow: [
@@ -272,12 +273,12 @@ class ProfileView extends GetView<ProfileController> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  IconButton(
-                                    color: Colors.red,
-                                    icon: Icon(Icons.logout),
-                                    onPressed: () {
-                                      // Implement logout functionality here
-                                    },
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 15.w),
+                                    child: Icon(
+                                      Icons.logout,
+                                      color: Colors.red,
+                                    ),
                                   ),
                                   Text(
                                     "Logout",
