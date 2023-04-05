@@ -41,6 +41,6 @@ This is mini e learning application
 
 ### Any good think you want to do ?
 
-- you can make feature to do file pick on chat / discussion page and store it on firestore 
-- same with above, but on profile edit page
-- add some feature or page to review users answer and exercise explanation
+- You can create a feature that allows users to pick a file from the chat/discussion page and store it on Firestore.
+- Same with above, you can add a feature on the profile edit page that allows users to pick a file and store it on Firestore.
+- You can also add a page or feature for users to review their answers and the explanations for exercises.
