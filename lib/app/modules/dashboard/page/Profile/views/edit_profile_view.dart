@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_e_learning/app/modules/dashboard/page/Profile/controllers/profile_controller.dart';
@@ -17,7 +18,7 @@ class EditProfileView extends GetView<ProfileController> {
         title: Text(
           'Edit Akun',
           style: GoogleFonts.poppins(
-            fontSize: 18,
+            fontSize: 18.sp,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -28,9 +29,9 @@ class EditProfileView extends GetView<ProfileController> {
         children: [
           Expanded(
             child: Container(
-              width: Get.width,
-              height: Get.height,
-              margin: const EdgeInsets.only(left: 20, right: 20),
+              width: ScreenUtil().screenWidth,
+              height: ScreenUtil().screenHeight,
+              margin: EdgeInsets.only(left: 20.w, right: 20.w),
               child: GetBuilder<ProfileController>(
                 builder: (controller) {
                   return Form(
@@ -40,16 +41,16 @@ class EditProfileView extends GetView<ProfileController> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const SizedBox(
-                              height: 25.0,
+                            SizedBox(
+                              height: 25.0.h,
                             ),
                             Text(
                               'Data Diri',
                               style: GoogleFonts.poppins(
-                                  fontSize: 20, fontWeight: FontWeight.w400),
+                                  fontSize: 20.sp, fontWeight: FontWeight.w400),
                             ),
-                            const SizedBox(
-                              height: 16.0,
+                            SizedBox(
+                              height: 16.0.h,
                             ),
                             EditFormInput(
                               label: 'Nama Lengkap',
@@ -73,15 +74,15 @@ class EditProfileView extends GetView<ProfileController> {
                               label: 'Sekolah',
                               controller: controller.sekolahTextController,
                             ),
-                            const SizedBox(
-                              height: 30.0,
+                            SizedBox(
+                              height: 30.0.h,
                             ),
                             Container(
-                              height: 50,
-                              width: Get.width,
-                              decoration: const BoxDecoration(
+                              height: 50.h,
+                              width: ScreenUtil().screenWidth,
+                              decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all(
-                                  Radius.circular(12.0),
+                                  Radius.circular(12.0.r),
                                 ),
                               ),
                               child: ElevatedButton(
@@ -94,7 +95,7 @@ class EditProfileView extends GetView<ProfileController> {
                                 child: Text(
                                   "Perbarui Data",
                                   style: GoogleFonts.poppins(
-                                    fontSize: 12,
+                                    fontSize: 12.sp,
                                     fontWeight: FontWeight.w800,
                                   ),
                                 ),

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,22 +34,22 @@ class HomeView extends GetView<HomeController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: 100,
-                  padding: const EdgeInsets.only(
-                      top: 10, left: 20, right: 20, bottom: 0),
+                  alignment: Alignment.bottomCenter,
+                  height: 50.w,
+                  padding: EdgeInsets.only(left: 20.w, right: 20.w),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Flexible(
                             child: Text(
                               "Hai, ${controller.userData.data?.userEmail}",
                               style: GoogleFonts.poppins(
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -58,35 +59,52 @@ class HomeView extends GetView<HomeController> {
                               "Selamat Datang",
                               style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.w400,
-                                fontSize: 14,
+                                fontSize: 14.sp,
                               ),
                             ),
                           ),
                         ],
                       ),
-                      Image.asset(
-                        "assets/img/avatar.png",
-                        width: 35.0,
-                        height: 35.0,
-                        fit: BoxFit.contain,
+                      SizedBox(
+                        height: 35.0.w,
+                        width: 35.w,
+                        child: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                            controller.userData.data!.userFoto!,
+                          ),
+                          child: FadeInImage(
+                            placeholder:
+                                const AssetImage('assets/img/avatar.png'),
+                            fit: BoxFit.contain,
+                            imageErrorBuilder: (BuildContext context,
+                                Object exception, StackTrace? stackTrace) {
+                              return Image.asset('assets/img/avatar.png');
+                            },
+                            image: NetworkImage(
+                              controller.userData.data!.userFoto!,
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
+                ),
+                SizedBox(
+                  height: 10.0.h,
                 ),
                 Expanded(
                   child: Column(
                     children: [
                       Container(
-                        height: 150,
-                        width: Get.width,
-                        margin: const EdgeInsets.symmetric(horizontal: 20),
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
+                        height: 150.h,
+                        width: 317.w,
+                        decoration: BoxDecoration(
+                          image: const DecorationImage(
                               image: AssetImage('assets/img/vector-ppl.png'),
                               alignment: AlignmentDirectional.bottomEnd),
                           color: ColorPallete.bgColor,
                           borderRadius: BorderRadius.all(
-                            Radius.circular(20.0),
+                            Radius.circular(20.r),
                           ),
                         ),
                         child: Column(
@@ -95,11 +113,11 @@ class HomeView extends GetView<HomeController> {
                           children: [
                             Container(
                               margin: const EdgeInsets.all(20),
-                              width: 107,
+                              width: 107.w,
                               child: Text(
                                 'Mau kerjain latihan soal apa hari ini ?',
                                 style: GoogleFonts.poppins(
-                                    fontSize: 16,
+                                    fontSize: 16.sp,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white),
                               ),
@@ -108,15 +126,15 @@ class HomeView extends GetView<HomeController> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(
-                            left: 20, right: 20, top: 25, bottom: 20),
+                        padding: EdgeInsets.only(
+                            left: 20.w, right: 20.w, top: 25.h, bottom: 20.h),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'Pilih Pelajaran',
                               style: GoogleFonts.poppins(
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -125,14 +143,22 @@ class HomeView extends GetView<HomeController> {
                               child: Text(
                                 'Lihat Semua',
                                 style: GoogleFonts.poppins(
-                                    fontSize: 10, color: ColorPallete.bgColor),
+                                    fontSize: 10.sp,
+                                    color: ColorPallete.bgColor),
                               ),
                             ),
                           ],
                         ),
                       ),
                       controller.isLoading
-                          ? const Expanded(child: MyListViewShimmer())
+                          ? Expanded(
+                              child: ListView.builder(
+                                itemCount: 10,
+                                itemBuilder: (context, index) {
+                                  return const MyListViewShimmer();
+                                },
+                              ),
+                            )
                           : Expanded(
                               child: ListView.builder(
                                 itemCount: controller.courseList.length,
@@ -165,7 +191,7 @@ class HomeView extends GetView<HomeController> {
                                         child: Text(
                                           "Saat ini tidak ada pelajaran tersedia",
                                           style: GoogleFonts.poppins(
-                                            fontSize: 14,
+                                            fontSize: 14.sp,
                                             fontWeight: FontWeight.w400,
                                           ),
                                         ),
@@ -178,12 +204,12 @@ class HomeView extends GetView<HomeController> {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 20, right: 20, top: 5, bottom: 20),
+                          padding: EdgeInsets.only(
+                              left: 20.w, right: 20.w, top: 20.h, bottom: 20.h),
                           child: Text(
                             'Terbaru',
                             style: GoogleFonts.poppins(
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -192,7 +218,7 @@ class HomeView extends GetView<HomeController> {
                       Builder(builder: (context) {
                         return CarouselSlider(
                           options: CarouselOptions(
-                            height: 140.0,
+                            height: 146.0.h,
                             autoPlay: true,
                             enlargeCenterPage: true,
                           ),
@@ -200,17 +226,16 @@ class HomeView extends GetView<HomeController> {
                             return Builder(
                               builder: (BuildContext context) {
                                 return Container(
-                                  width: Get.width,
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 5.0),
-                                  decoration: const BoxDecoration(
+                                  height: 146.h,
+                                  width: ScreenUtil().screenWidth,
+                                  decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(
-                                      Radius.circular(8.0),
+                                      Radius.circular(8.0.r),
                                     ),
                                   ),
                                   child: ClipRRect(
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(8.0),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(8.0.r),
                                     ),
                                     child: GestureDetector(
                                       onTap: () async {
@@ -228,10 +253,10 @@ class HomeView extends GetView<HomeController> {
                                             (context, error, stackTrace) {
                                           return Image.asset(
                                             'assets/img/placeholder.png',
-                                            fit: BoxFit.cover,
+                                            fit: BoxFit.fill,
                                           );
                                         },
-                                        fit: BoxFit.cover,
+                                        fit: BoxFit.fill,
                                       ),
                                     ),
                                   ),
@@ -241,8 +266,8 @@ class HomeView extends GetView<HomeController> {
                           }).toList(),
                         );
                       }),
-                      const SizedBox(
-                        height: 20.0,
+                      SizedBox(
+                        height: 20.0.h,
                       ),
                     ],
                   ),

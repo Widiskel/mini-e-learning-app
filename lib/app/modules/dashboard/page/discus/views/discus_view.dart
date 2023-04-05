@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_e_learning/app/data/models/chat_model.dart';
@@ -18,7 +19,8 @@ class DiscusView extends GetView<DiscusController> {
         backgroundColor: ColorPallete.bgColor,
         title: Text(
           'Diskusi Soal',
-          style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w700),
+          style:
+              GoogleFonts.poppins(fontSize: 18.sp, fontWeight: FontWeight.w700),
         ),
         centerTitle: false,
       ),
@@ -57,8 +59,8 @@ class DiscusView extends GetView<DiscusController> {
                       Message.fromFirestore(snapshot.data!.docs[index]);
                   if (chat.email == controller.userData.data!.userEmail!) {
                     return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 15),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20.w, vertical: 15.h),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -74,8 +76,8 @@ class DiscusView extends GetView<DiscusController> {
                     );
                   } else {
                     return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 15),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20.w, vertical: 15.h),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -95,15 +97,15 @@ class DiscusView extends GetView<DiscusController> {
         }),
       ),
       bottomNavigationBar: Container(
-        height: 65,
-        width: Get.width,
+        height: 65.h,
+        width: ScreenUtil().screenWidth,
         color: Colors.white,
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: Row(
           children: [
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 10, top: 5),
+                padding: EdgeInsets.only(bottom: 10.h, top: 5.h),
                 child: TextField(
                   controller: controller.messageController,
                   decoration: InputDecoration(
@@ -111,14 +113,14 @@ class DiscusView extends GetView<DiscusController> {
                     filled: true,
                     fillColor: ColorPallete.bgColorForm,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
+                      borderRadius: BorderRadius.circular(25.0.r),
                       borderSide: BorderSide.none,
                     ),
                   ),
                 ),
               ),
             ),
-            const SizedBox(width: 10),
+            SizedBox(width: 10.w),
             InkWell(
               onTap: () {
                 if (controller.messageController.text.isNotEmpty) {
@@ -127,11 +129,11 @@ class DiscusView extends GetView<DiscusController> {
                 }
               },
               child: Container(
-                height: 30,
-                width: 30,
+                height: 30.h,
+                width: 30.w,
                 decoration: BoxDecoration(
                   color: Colors.blue,
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(15.r),
                 ),
                 child: const Icon(
                   Icons.send,

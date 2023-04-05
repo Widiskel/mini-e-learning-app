@@ -9,7 +9,7 @@ import '../modules/dashboard/page/Home/views/home_view.dart';
 import '../modules/dashboard/page/Profile/views/edit_profile_view.dart';
 import '../modules/dashboard/page/Profile/views/profile_view.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
-import '../modules/dashboard/page/discus/views/discus_view.dart';
+import '../modules/dashboard/page/Discus/views/discus_view.dart';
 import '../modules/exercise/bindings/exercise_binding.dart';
 import '../modules/exercise/views/exercise_view.dart';
 import '../modules/login/bindings/login_binding.dart';

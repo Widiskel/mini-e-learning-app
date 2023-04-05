@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,7 +18,7 @@ class ProfileView extends GetView<ProfileController> {
       body: Column(
         children: [
           Container(
-            width: Get.width,
+            width: ScreenUtil().screenWidth,
             height: kToolbarHeight,
             color: ColorPallete.bgColor,
             child: Stack(
@@ -29,14 +30,14 @@ class ProfileView extends GetView<ProfileController> {
                     'My App',
                     style: GoogleFonts.poppins(
                       color: Colors.white,
-                      fontSize: 20.0,
+                      fontSize: 20.0.sp,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),
                 Container(
                   alignment: Alignment.centerRight,
-                  margin: EdgeInsets.only(right: 20),
+                  margin: EdgeInsets.only(right: 20.w),
                   child: GestureDetector(
                     onTap: () {
                       Get.toNamed(Routes.editProfile);
@@ -45,7 +46,7 @@ class ProfileView extends GetView<ProfileController> {
                       'Edit',
                       style: GoogleFonts.poppins(
                         color: Colors.white,
-                        fontSize: 15.0,
+                        fontSize: 15.0.sp,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -63,14 +64,14 @@ class ProfileView extends GetView<ProfileController> {
                     Flexible(
                       child: Container(
                         alignment: Alignment.center,
-                        padding: const EdgeInsets.only(bottom: 20),
-                        width: Get.width,
-                        height: 150,
+                        padding: EdgeInsets.only(bottom: 20.h),
+                        width: ScreenUtil().screenWidth,
+                        height: 130,
                         decoration: BoxDecoration(
                           color: ColorPallete.bgColor,
                           borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(20),
+                            bottomLeft: Radius.circular(20.r),
+                            bottomRight: Radius.circular(20.r),
                           ),
                         ),
                         child: Center(
@@ -85,7 +86,7 @@ class ProfileView extends GetView<ProfileController> {
                                     controller.userData.data!.userName!,
                                     style: GoogleFonts.poppins(
                                       color: Colors.white,
-                                      fontSize: 20,
+                                      fontSize: 20.sp,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
@@ -93,15 +94,15 @@ class ProfileView extends GetView<ProfileController> {
                                     controller.userData.data!.userAsalSekolah!,
                                     style: GoogleFonts.poppins(
                                       color: Colors.white,
-                                      fontSize: 12,
+                                      fontSize: 12.sp,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
                                 ],
                               ),
                               SizedBox(
-                                width: 80,
-                                height: 80,
+                                width: 80.w,
+                                height: 80.h,
                                 child: CircleAvatar(
                                   backgroundImage: NetworkImage(
                                     controller.userData.data!.userFoto!,
@@ -129,11 +130,11 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                     Flexible(
                       child: Container(
-                        width: Get.width,
-                        margin:
-                            EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 15, horizontal: 20),
+                        width: ScreenUtil().screenWidth,
+                        margin: EdgeInsets.symmetric(
+                            horizontal: 15.w, vertical: 20.h),
+                        padding: EdgeInsets.symmetric(
+                            vertical: 15.h, horizontal: 20.w),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -153,17 +154,17 @@ class ProfileView extends GetView<ProfileController> {
                             Text(
                               'Identitas Diri',
                               style: GoogleFonts.poppins(
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            const SizedBox(
-                              height: 30.0,
+                            SizedBox(
+                              height: 30.0.h,
                             ),
                             Text(
                               'Nama Lengkap',
                               style: GoogleFonts.poppins(
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 color: ColorPallete.subTitle,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -171,17 +172,17 @@ class ProfileView extends GetView<ProfileController> {
                             Text(
                               controller.userData.data!.userName!,
                               style: GoogleFonts.poppins(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            const SizedBox(
-                              height: 15.0,
+                            SizedBox(
+                              height: 15.0.h,
                             ),
                             Text(
                               'Email',
                               style: GoogleFonts.poppins(
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 color: ColorPallete.subTitle,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -189,17 +190,17 @@ class ProfileView extends GetView<ProfileController> {
                             Text(
                               controller.userData.data!.userEmail!,
                               style: GoogleFonts.poppins(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            const SizedBox(
-                              height: 15.0,
+                            SizedBox(
+                              height: 15.0.h,
                             ),
                             Text(
                               'Jenis Kelamin',
                               style: GoogleFonts.poppins(
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 color: ColorPallete.subTitle,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -207,17 +208,17 @@ class ProfileView extends GetView<ProfileController> {
                             Text(
                               controller.userData.data!.userGender!,
                               style: GoogleFonts.poppins(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            const SizedBox(
-                              height: 15.0,
+                            SizedBox(
+                              height: 15.0.h,
                             ),
                             Text(
                               'Kelas',
                               style: GoogleFonts.poppins(
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 color: ColorPallete.subTitle,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -225,17 +226,17 @@ class ProfileView extends GetView<ProfileController> {
                             Text(
                               controller.userData.data!.kelas!,
                               style: GoogleFonts.poppins(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            const SizedBox(
-                              height: 15.0,
+                            SizedBox(
+                              height: 15.0.h,
                             ),
                             Text(
                               'Sekolah',
                               style: GoogleFonts.poppins(
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 color: ColorPallete.subTitle,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -243,7 +244,7 @@ class ProfileView extends GetView<ProfileController> {
                             Text(
                               controller.userData.data!.userAsalSekolah!,
                               style: GoogleFonts.poppins(
-                                fontSize: 13,
+                                fontSize: 13.sp,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -256,9 +257,9 @@ class ProfileView extends GetView<ProfileController> {
                         controller.signOut();
                       },
                       child: Container(
-                        width: Get.width,
-                        height: 50,
-                        margin: EdgeInsets.only(left: 16, top: 10),
+                        width: ScreenUtil().screenWidth,
+                        height: 50.h,
+                        margin: EdgeInsets.only(left: 16.w, top: 10.h),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
@@ -285,7 +286,7 @@ class ProfileView extends GetView<ProfileController> {
                               style: GoogleFonts.poppins(
                                 color: Colors.red,
                                 fontWeight: FontWeight.w400,
-                                fontSize: 16,
+                                fontSize: 16.sp,
                               ),
                             ),
                           ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,7 +25,8 @@ class CourseView extends GetView<HomeController> {
         backgroundColor: ColorPallete.bgColor,
         title: Text(
           'Pilih Pelajaran',
-          style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w700),
+          style:
+              GoogleFonts.poppins(fontSize: 18.sp, fontWeight: FontWeight.w700),
         ),
         centerTitle: false,
       ),
@@ -36,7 +38,14 @@ class CourseView extends GetView<HomeController> {
               itemCount: controller.courseList.length,
               itemBuilder: (context, index) {
                 if (controller.isLoading) {
-                  return const MyListViewShimmer();
+                  return Column(
+                    children: [
+                      SizedBox(
+                        height: 15.0.h,
+                      ),
+                      const MyListViewShimmer(),
+                    ],
+                  );
                 } else {
                   if (controller.courseList.isNotEmpty) {
                     return Column(
@@ -62,7 +71,7 @@ class CourseView extends GetView<HomeController> {
                     return Text(
                       "Saat ini tidak ada pelajaran tersedia",
                       style: GoogleFonts.poppins(
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.w400,
                       ),
                     );

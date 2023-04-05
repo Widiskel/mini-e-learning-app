@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mini_e_learning/app/data/utils/color_pallete.dart';
-// import 'package:responsive_framework/responsive_framework.dart';
 import 'app/routes/app_pages.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
+  await ScreenUtil.ensureScreenSize();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky,
+      overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
 
   runApp(const MyApp());
 }
@@ -20,25 +24,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'E Learning',
-      // builder: (context, child) => ResponsiveWrapper.builder(
-      //   BouncingScrollWrapper.builder(context, child!),
-      //   maxWidth: 1200,
-      //   minWidth: 400,
-      //   defaultScale: true,
-      //   breakpoints: [
-      //     const ResponsiveBreakpoint.autoScale(500, name: 'MOBILE'),
-      //     const ResponsiveBreakpoint.autoScale(800, name: 'TABLET'),
-      //     const ResponsiveBreakpoint.autoScale(1000, name: 'DESKTOP'),
-      //     const ResponsiveBreakpoint.resize(1440, name: '1440x3120'),
-      //     const ResponsiveBreakpoint.autoScale(2460, name: '4K'),
-      //   ],
-      // ),
-      theme: ThemeData(primaryColor: ColorPallete.bgColor, fontFamily: ''),
-      debugShowCheckedModeBanner: false,
-      initialRoute: Routes.splash,
-      getPages: AppPages.routes,
+    return ScreenUtilInit(
+      designSize: const Size(360, 945),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (BuildContext context, Widget? child) {
+        return GetMaterialApp(
+          title: 'E Learning',
+          theme: ThemeData(primaryColor: ColorPallete.bgColor, fontFamily: ''),
+          debugShowCheckedModeBanner: false,
+          defaultTransition: Transition.circularReveal,
+          transitionDuration: const Duration(seconds: 1),
+          initialRoute: Routes.splash,
+          getPages: AppPages.routes,
+        );
+      },
     );
   }
 }

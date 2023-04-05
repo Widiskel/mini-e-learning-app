@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:timeago/timeago.dart';
 
@@ -33,11 +34,11 @@ class ChatBubble extends StatelessWidget {
           ),
         ),
         Container(
-          margin: const EdgeInsets.only(top: 5.0, bottom: 3),
-          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+          margin: EdgeInsets.only(top: 5.0.h, bottom: 3.h),
+          padding: EdgeInsets.symmetric(vertical: 8.0.h, horizontal: 12.0.w),
           decoration: BoxDecoration(
             color: colorp,
-            borderRadius: BorderRadius.circular(16.0),
+            borderRadius: BorderRadius.circular(16.0.r),
           ),
           child: Text(
             message,

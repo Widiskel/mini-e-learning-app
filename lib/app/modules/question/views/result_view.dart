@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,7 +21,7 @@ class ResultView extends GetView<QuestionController> {
             'Selamat',
             style: GoogleFonts.poppins(
               color: Colors.white,
-              fontSize: 25,
+              fontSize: 25.sp,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -28,7 +29,7 @@ class ResultView extends GetView<QuestionController> {
             'Kamu telah menyelesaikan Kuiz ini',
             style: GoogleFonts.poppins(
               color: Colors.white,
-              fontSize: 14,
+              fontSize: 14.sp,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -40,7 +41,7 @@ class ResultView extends GetView<QuestionController> {
             'Nilai kamu :',
             style: GoogleFonts.poppins(
               color: Colors.white,
-              fontSize: 13,
+              fontSize: 13.sp,
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -49,7 +50,7 @@ class ResultView extends GetView<QuestionController> {
               controller.score,
               style: GoogleFonts.poppins(
                 color: Colors.white,
-                fontSize: 100,
+                fontSize: 100.sp,
                 fontWeight: FontWeight.w400,
               ),
             );

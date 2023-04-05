@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:mini_e_learning/app/data/utils/color_pallete.dart';
 import 'package:mini_e_learning/app/modules/question/controllers/question_controller.dart';
@@ -35,8 +36,8 @@ class AnswerWidget extends StatelessWidget {
         controller.update();
       },
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 7),
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+        margin: EdgeInsets.symmetric(horizontal: 18.w, vertical: 7.h),
+        padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 15.h),
         decoration: BoxDecoration(
           color:
               option == controller.answerList[controller.currentQuestionIndex]
@@ -46,8 +47,8 @@ class AnswerWidget extends StatelessWidget {
             width: 1.0,
             color: ColorPallete.answerBorder,
           ),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(12.0),
+          borderRadius: BorderRadius.all(
+            Radius.circular(12.0.r),
           ),
         ),
         child: Row(
@@ -55,8 +56,8 @@ class AnswerWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('$option.'),
-            const SizedBox(
-              width: 15.0,
+            SizedBox(
+              width: 15.0.h,
             ),
             Expanded(
               child: Column(

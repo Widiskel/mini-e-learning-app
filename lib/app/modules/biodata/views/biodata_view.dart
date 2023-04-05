@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,7 +28,7 @@ class BiodataView extends GetView<BiodataController> {
         title: Text(
           'Yuk isi data diri',
           style: GoogleFonts.poppins(
-            fontSize: 20,
+            fontSize: 20.sp,
             fontWeight: FontWeight.w700,
             color: Colors.black,
           ),
@@ -36,13 +37,13 @@ class BiodataView extends GetView<BiodataController> {
       body: Column(
         children: [
           Container(
-            height: 30,
-            width: MediaQuery.of(context).size.width,
+            height: 30.h,
+            width: ScreenUtil().screenWidth,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(12.0),
-                bottomRight: Radius.circular(12.0),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(12.0.r),
+                bottomRight: Radius.circular(12.0.r),
               ),
               boxShadow: [
                 BoxShadow(
@@ -59,32 +60,33 @@ class BiodataView extends GetView<BiodataController> {
                 key: controller.formKey,
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.all(28),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 25.h, horizontal: 25.w),
                   children: [
                     FormInput(
                       label: 'Email',
                       controller: controller.emailTextController,
                       enabled: false,
                     ),
-                    const SizedBox(
-                      height: 25.0,
+                    SizedBox(
+                      height: 25.0.h,
                     ),
                     FormInput(
                       label: 'Nama Lengkap',
                       controller: controller.nameTextController,
                     ),
-                    const SizedBox(
-                      height: 25.0,
+                    SizedBox(
+                      height: 25.0.h,
                     ),
                     Text(
                       'Kelas',
                       style: GoogleFonts.poppins(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    const SizedBox(
-                      height: 5.0,
+                    SizedBox(
+                      height: 5.0.h,
                     ),
                     DropdownButtonFormField(
                       value: controller.kelas,
@@ -95,7 +97,7 @@ class BiodataView extends GetView<BiodataController> {
                               child: Text(
                                 kelas,
                                 style: GoogleFonts.poppins(
-                                  fontSize: 16,
+                                  fontSize: 16.sp,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -110,28 +112,28 @@ class BiodataView extends GetView<BiodataController> {
                         fillColor: Colors.white,
                         filled: true,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.r),
                           borderSide: const BorderSide(
                             color: ColorPallete.bgColorForm,
                             width: 3,
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.r),
                           borderSide: const BorderSide(
                             color: ColorPallete.bgColorForm,
                             width: 1,
                           ),
                         ),
                         errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.r),
                           borderSide: const BorderSide(
                             color: Colors.red,
                             width: 1,
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.r),
                           borderSide: const BorderSide(
                             color: ColorPallete.bgColorForm,
                             width: 1,
@@ -142,18 +144,18 @@ class BiodataView extends GetView<BiodataController> {
                       validator: FormBuilderValidators.compose(
                           [FormBuilderValidators.required()]),
                     ),
-                    const SizedBox(
-                      height: 25.0,
+                    SizedBox(
+                      height: 25.0.h,
                     ),
                     Text(
                       'Jenis Kelamin',
                       style: GoogleFonts.poppins(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    const SizedBox(
-                      height: 5.0,
+                    SizedBox(
+                      height: 5.0.h,
                     ),
                     Row(
                       children: [
@@ -164,11 +166,11 @@ class BiodataView extends GetView<BiodataController> {
                               controller.update();
                             },
                             child: Container(
-                              height: 60,
+                              height: 60.h,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.r),
                                 border: Border.all(
                                   color: controller.jenisKelamin == 'Laki-Laki'
                                       ? Colors.green
@@ -178,19 +180,19 @@ class BiodataView extends GetView<BiodataController> {
                                       : 1,
                                 ),
                               ),
-                              padding: const EdgeInsets.symmetric(vertical: 6),
+                              padding: EdgeInsets.symmetric(vertical: 6.h),
                               child: Text(
                                 'Laki-Laki',
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 14,
+                                  fontSize: 14.sp,
                                 ),
                               ),
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          width: 10.0,
+                        SizedBox(
+                          width: 10.0.w,
                         ),
                         Expanded(
                           child: InkWell(
@@ -199,11 +201,11 @@ class BiodataView extends GetView<BiodataController> {
                               controller.update();
                             },
                             child: Container(
-                              height: 60,
+                              height: 60.h,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.r),
                                 border: Border.all(
                                   color: controller.jenisKelamin == 'Perempuan'
                                       ? Colors.green
@@ -213,12 +215,12 @@ class BiodataView extends GetView<BiodataController> {
                                       : 1,
                                 ),
                               ),
-                              padding: const EdgeInsets.symmetric(vertical: 6),
+                              padding: EdgeInsets.symmetric(vertical: 6.h),
                               child: Text(
                                 'Perempuan',
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 14,
+                                  fontSize: 14.sp,
                                 ),
                               ),
                             ),
@@ -226,8 +228,8 @@ class BiodataView extends GetView<BiodataController> {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 25.0,
+                    SizedBox(
+                      height: 25.0.h,
                     ),
                     FormInput(
                         label: 'Nama Sekolah',
@@ -261,7 +263,7 @@ class BiodataView extends GetView<BiodataController> {
               child: Text(
                 'Daftar',
                 style: GoogleFonts.poppins(
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),

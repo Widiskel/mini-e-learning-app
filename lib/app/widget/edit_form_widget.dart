@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -53,8 +54,8 @@ class EditFormInput extends StatelessWidget {
             ),
             validator: FormBuilderValidators.compose(
                 [FormBuilderValidators.required()])),
-        const SizedBox(
-          height: 20.0,
+        SizedBox(
+          height: 20.0.h,
         ),
       ],
     );

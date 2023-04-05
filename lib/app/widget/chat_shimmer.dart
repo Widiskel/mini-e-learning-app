@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../data/utils/color_pallete.dart';
@@ -10,7 +11,7 @@ Shimmer chatShimmer() {
     child: Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.end,
@@ -18,26 +19,26 @@ Shimmer chatShimmer() {
               Expanded(
                 child: Container(
                   color: Colors.white,
-                  height: 20,
-                  margin: const EdgeInsets.only(left: 50, right: 10),
+                  height: 20.h,
+                  margin: EdgeInsets.only(left: 50.w, right: 10.w),
                 ),
               ),
-              const SizedBox(height: 50, width: 50, child: CircleAvatar()),
+              SizedBox(height: 50.h, width: 50.w, child: const CircleAvatar()),
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const SizedBox(height: 50, width: 50, child: CircleAvatar()),
+              SizedBox(height: 50.h, width: 50.w, child: const CircleAvatar()),
               Expanded(
                 child: Container(
                   color: Colors.white,
-                  height: 20,
-                  margin: const EdgeInsets.only(left: 10, right: 50),
+                  height: 20.h,
+                  margin: EdgeInsets.only(left: 10.w, right: 50.w),
                 ),
               ),
             ],

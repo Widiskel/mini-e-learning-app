@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,11 +26,11 @@ class CourseWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: EdgeInsets.symmetric(horizontal: 20.0.w),
       child: Container(
-        width: Get.width,
-        height: 100,
-        margin: const EdgeInsets.only(bottom: 15),
+        width: ScreenUtil().screenWidth,
+        height: 115.h,
+        margin: EdgeInsets.only(bottom: 10.h),
         decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(
@@ -51,9 +52,9 @@ class CourseWidget extends StatelessWidget {
             child: Row(
               children: [
                 Container(
-                  margin: const EdgeInsets.only(left: 20),
-                  height: 55,
-                  width: 55,
+                  margin: EdgeInsets.only(left: 20.w),
+                  height: 55.h,
+                  width: 55.w,
                   decoration: const BoxDecoration(
                     color: ColorPallete.iconBg,
                     borderRadius: BorderRadius.all(
@@ -89,7 +90,7 @@ class CourseWidget extends StatelessWidget {
                 ),
                 Expanded(
                     child: Padding(
-                  padding: const EdgeInsets.only(top: 18, left: 18, right: 18),
+                  padding: EdgeInsets.only(top: 18.h, left: 18.w, right: 18.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -100,8 +101,8 @@ class CourseWidget extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      const SizedBox(
-                        height: 5.0,
+                      SizedBox(
+                        height: 5.0.h,
                       ),
                       Text(
                         "$done/$materi Paket latihan soal",
@@ -110,12 +111,12 @@ class CourseWidget extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                             color: ColorPallete.subTitle),
                       ),
-                      const SizedBox(
-                        height: 10.0,
+                      SizedBox(
+                        height: 10.0.h,
                       ),
                       LinearProgressIndicator(
                         value: materi != null ? 0 : done / materi!,
-                        minHeight: 10,
+                        minHeight: 10.h,
                         backgroundColor: Colors.grey[300],
                         valueColor:
                             const AlwaysStoppedAnimation<Color>(Colors.blue),

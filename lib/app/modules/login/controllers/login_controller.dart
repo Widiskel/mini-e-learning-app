@@ -14,11 +14,19 @@ class LoginController extends GetxController {
 
   LoginController(this.firebase, this.userRepository);
 
+  bool isLoading = false;
+
   Future<void> onGoogleSignIn() async {
+    isLoading = true;
+    update();
     try {
       await firebase.signInWithGoogle();
       await isUserRegistered();
+      isLoading = false;
+      update();
     } on PlatformException catch (e) {
+      isLoading = false;
+      update();
       ErrorSnack.show(message: e.message.toString());
     }
   }

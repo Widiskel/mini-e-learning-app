@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../data/utils/color_pallete.dart';
@@ -24,9 +25,9 @@ class GridViewShimmer extends StatelessWidget {
             ),
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(
-                    Radius.circular(12.0),
+                    Radius.circular(12.0.r),
                   ),
                   color: Colors.white,
                 ),
@@ -52,27 +53,27 @@ class GridViewShimmer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: 36,
-                      width: 36,
-                      margin: const EdgeInsets.only(top: 10, left: 15),
-                      decoration: const BoxDecoration(
+                      height: 36.h,
+                      width: 36.w,
+                      margin: EdgeInsets.only(top: 10.h, left: 15.w),
+                      decoration: BoxDecoration(
                         color: ColorPallete.iconBg,
                         borderRadius: BorderRadius.all(
-                          Radius.circular(12.0),
+                          Radius.circular(12.0.r),
                         ),
                       ),
                     ),
                     Padding(
                       padding:
-                          const EdgeInsets.only(top: 8, left: 15, right: 20),
+                          EdgeInsets.only(top: 8.h, left: 15.w, right: 20.w),
                       child: Container(
                         height: 8.0,
                         color: Colors.white,
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                          top: 2, left: 15, bottom: 10, right: 10),
+                      padding: EdgeInsets.only(
+                          top: 2.h, left: 15.w, bottom: 10.h, right: 10.w),
                       child: Container(
                         height: 6.0,
                         color: Colors.white,

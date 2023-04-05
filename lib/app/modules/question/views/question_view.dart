@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 import 'package:get/get.dart';
@@ -18,7 +19,7 @@ class QuestionView extends GetView<QuestionController> {
         title: Text(
           'Latihan Soal',
           style: GoogleFonts.poppins(
-            fontSize: 18,
+            fontSize: 18.sp,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -42,15 +43,15 @@ class QuestionView extends GetView<QuestionController> {
               return Column(
                 children: [
                   Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 10),
-                    height: 65,
+                    margin: EdgeInsets.symmetric(horizontal: 10.w),
+                    height: 65.h,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: List.generate(
                         controller.questionLength,
                         (index) => SizedBox(
-                          height: 60,
-                          width: 60,
+                          height: 60.w,
+                          width: 60.h,
                           child: IconButton(
                             icon: Container(
                               alignment: Alignment.center,
@@ -70,7 +71,7 @@ class QuestionView extends GetView<QuestionController> {
                               child: Text(
                                 '${index + 1}',
                                 style: GoogleFonts.poppins(
-                                  fontSize: 14,
+                                  fontSize: 14.sp,
                                   fontWeight:
                                       index == controller.currentQuestionIndex
                                           ? FontWeight.w800
@@ -93,32 +94,30 @@ class QuestionView extends GetView<QuestionController> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: Get.width,
-                    height: Get.height * 0.8,
+                  Expanded(
                     child: ListView(
                       children: [
-                        const SizedBox(
-                          height: 20.0,
+                        SizedBox(
+                          height: 20.0.h,
                         ),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 18),
+                            padding: EdgeInsets.symmetric(horizontal: 18.w),
                             child: Text(
                               'Soal nomor ${controller.currentQuestionIndex + 1}',
                               style: GoogleFonts.poppins(
-                                  fontSize: 12,
+                                  fontSize: 12.sp,
                                   fontWeight: FontWeight.w400,
                                   color: ColorPallete.subTitle),
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 10.0,
+                        SizedBox(
+                          height: 10.0.h,
                         ),
                         Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 18),
+                          margin: EdgeInsets.symmetric(horizontal: 18.w),
                           child: HtmlWidget(controller
                               .questionList[controller.currentQuestionIndex]
                               .questionTitle!),
@@ -127,8 +126,7 @@ class QuestionView extends GetView<QuestionController> {
                                     .questionTitleImg !=
                                 null
                             ? Container(
-                                margin:
-                                    const EdgeInsets.symmetric(horizontal: 18),
+                                margin: EdgeInsets.symmetric(horizontal: 18.w),
                                 child: Image.network(
                                   controller
                                       .questionList[
@@ -155,8 +153,8 @@ class QuestionView extends GetView<QuestionController> {
                                 ),
                               )
                             : const Center(),
-                        const SizedBox(
-                          height: 20.0,
+                        SizedBox(
+                          height: 20.0.h,
                         ),
                         AnswerWidget(
                             option: 'A',
@@ -204,20 +202,20 @@ class QuestionView extends GetView<QuestionController> {
                               .optionEImg,
                           controller: controller,
                         ),
-                        const SizedBox(
-                          height: 15.0,
+                        SizedBox(
+                          height: 15.0.h,
                         ),
                         Align(
                           alignment: Alignment.centerRight,
                           child: UnconstrainedBox(
                             child: Container(
-                              width: 135,
-                              height: 33,
-                              margin: const EdgeInsets.only(
-                                  right: 20, left: 20, top: 10),
-                              decoration: const BoxDecoration(
+                              width: 135.w,
+                              height: 33.h,
+                              margin: EdgeInsets.only(
+                                  right: 20.w, left: 20.w, top: 10.h),
+                              decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all(
-                                  Radius.circular(12.0),
+                                  Radius.circular(12.0.r),
                                 ),
                               ),
                               child: ElevatedButton(
@@ -227,19 +225,19 @@ class QuestionView extends GetView<QuestionController> {
                                       !controller.answerList.contains('')) {
                                     return showModalBottomSheet(
                                       context: context,
-                                      shape: const RoundedRectangleBorder(
+                                      shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.vertical(
-                                          top: Radius.circular(12.0),
+                                          top: Radius.circular(12.0.r),
                                         ),
                                       ),
                                       builder: (BuildContext context) {
                                         return Wrap(children: [
                                           Container(
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
                                                   BorderRadius.vertical(
-                                                top: Radius.circular(12.0),
+                                                top: Radius.circular(12.0.r),
                                               ),
                                             ),
                                             child: Column(
@@ -248,37 +246,38 @@ class QuestionView extends GetView<QuestionController> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.center,
                                               children: [
-                                                const SizedBox(
-                                                  height: 10.0,
+                                                SizedBox(
+                                                  height: 10.0.h,
                                                 ),
                                                 Container(
                                                   height: 6,
-                                                  width: Get.width * 0.3,
-                                                  decoration:
-                                                      const BoxDecoration(
+                                                  width:
+                                                      ScreenUtil().screenWidth *
+                                                          0.3,
+                                                  decoration: BoxDecoration(
                                                     color: ColorPallete
                                                         .bgColorForm,
                                                     borderRadius:
                                                         BorderRadius.all(
-                                                      Radius.circular(12.0),
+                                                      Radius.circular(12.0.r),
                                                     ),
                                                   ),
                                                 ),
-                                                const SizedBox(
-                                                  height: 22.0,
+                                                SizedBox(
+                                                  height: 22.0.h,
                                                 ),
                                                 Image.asset(
                                                   'assets/img/submit.png',
-                                                  width: 290,
-                                                  height: 120.0,
+                                                  width: 290.w,
+                                                  height: 120.0.h,
                                                 ),
-                                                const SizedBox(
-                                                  height: 8.0,
+                                                SizedBox(
+                                                  height: 8.0.h,
                                                 ),
                                                 Text(
                                                   'Kumpulkan latihan soal sekarang?',
                                                   style: GoogleFonts.poppins(
-                                                      fontSize: 12,
+                                                      fontSize: 12.sp,
                                                       fontWeight:
                                                           FontWeight.w700),
                                                 ),
@@ -287,17 +286,17 @@ class QuestionView extends GetView<QuestionController> {
                                                   style: GoogleFonts.poppins(
                                                       color:
                                                           ColorPallete.subTitle,
-                                                      fontSize: 12,
+                                                      fontSize: 12.sp,
                                                       fontWeight:
                                                           FontWeight.w600),
                                                 ),
-                                                const SizedBox(height: 20.0),
+                                                SizedBox(height: 20.0.h),
                                                 Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
                                                   children: [
                                                     SizedBox(
-                                                      width: 125,
+                                                      width: 125.w,
                                                       child: ElevatedButton(
                                                         onPressed: () {
                                                           Get.back();
@@ -319,7 +318,7 @@ class QuestionView extends GetView<QuestionController> {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        12.0),
+                                                                        12.0.r),
                                                           ),
                                                         ),
                                                         child: Text(
@@ -328,18 +327,18 @@ class QuestionView extends GetView<QuestionController> {
                                                               color:
                                                                   ColorPallete
                                                                       .bgColor,
-                                                              fontSize: 12,
+                                                              fontSize: 12.sp,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w700),
                                                         ),
                                                       ),
                                                     ),
-                                                    const SizedBox(
-                                                      width: 15.0,
+                                                    SizedBox(
+                                                      width: 15.0.h,
                                                     ),
                                                     SizedBox(
-                                                      width: 125,
+                                                      width: 125.w,
                                                       child: ElevatedButton(
                                                         onPressed: () {
                                                           controller.submit();
@@ -354,7 +353,7 @@ class QuestionView extends GetView<QuestionController> {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        12.0),
+                                                                        12.0.r),
                                                           ),
                                                         ),
                                                         child: Text(
@@ -363,7 +362,8 @@ class QuestionView extends GetView<QuestionController> {
                                                               .poppins(
                                                                   color: Colors
                                                                       .white,
-                                                                  fontSize: 12,
+                                                                  fontSize:
+                                                                      12.sp,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600),
@@ -372,8 +372,8 @@ class QuestionView extends GetView<QuestionController> {
                                                     ),
                                                   ],
                                                 ),
-                                                const SizedBox(
-                                                  height: 40.0,
+                                                SizedBox(
+                                                  height: 40.0.h,
                                                 ),
                                               ],
                                             ),
@@ -396,7 +396,7 @@ class QuestionView extends GetView<QuestionController> {
                                     ? Text(
                                         'Kumpulkan',
                                         style: GoogleFonts.poppins(
-                                          fontSize: 12,
+                                          fontSize: 12.sp,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.white,
                                         ),
@@ -404,7 +404,7 @@ class QuestionView extends GetView<QuestionController> {
                                     : Text(
                                         'Selanjutnya',
                                         style: GoogleFonts.poppins(
-                                          fontSize: 12,
+                                          fontSize: 12.sp,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.white,
                                         ),
@@ -413,8 +413,8 @@ class QuestionView extends GetView<QuestionController> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 100.0,
+                        SizedBox(
+                          height: 500.0.h,
                         ),
                       ],
                     ),
@@ -425,8 +425,8 @@ class QuestionView extends GetView<QuestionController> {
               return Center(
                 child: Image.asset(
                   "assets/img/notfound.png",
-                  width: 360.0,
-                  height: 290.0,
+                  width: ScreenUtil().screenWidth,
+                  height: 290.0.h,
                   fit: BoxFit.contain,
                 ),
               );
