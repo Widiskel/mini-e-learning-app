@@ -13,8 +13,8 @@ This is mini e learning application
 - node v14 (fore firebase & flutterfire instlal)
 - Knowledge about flutter & dart
 - Knowledge about Getx State Management
-- Knowledge API
-- Knowledge About Firebase
+- Knowledge about API
+- Knowledge about Firebase
 
 ### Design Reference 
 - Figma : https://www.figma.com/file/vht1hANiGM1sFld1zidoCG/Bootcamp-Flutter-Edspert?node-id=413%3A2&t=TT6NKRa3vVUacyQD-1
