@@ -16,6 +16,12 @@ This is mini e learning application
 - Knowledge API
 - Knowledge About Firebase
 
+### Design Reference 
+- Figma : https://www.figma.com/file/vht1hANiGM1sFld1zidoCG/Bootcamp-Flutter-Edspert?node-id=413%3A2&t=TT6NKRa3vVUacyQD-1
+
+### API Reference
+- Postman : https://documenter.getpostman.com/view/23481151/2s93RXtWDF
+
 ### Dependency used
 -  cupertino_icons: ^1.0.2
 -  get: 4.6.5
@@ -33,7 +39,7 @@ This is mini e learning application
 -  timeago: ^3.3.0
 -  flutter_screenutil: ^5.7.0
 
-## Any good think you want to do ?
+### Any good think you want to do ?
 
 - you can make feature to do file pick on chat / discussion page and store it on firestore 
 - same with above, but on profile edit page
