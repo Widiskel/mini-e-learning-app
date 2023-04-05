@@ -57,241 +57,252 @@ class ProfileView extends GetView<ProfileController> {
           ),
           GetBuilder<ProfileController>(
             builder: (controller) {
-              return SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
+              return Expanded(
+                child: ListView(
                   children: [
-                    Flexible(
-                      child: Container(
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.only(bottom: 20.h),
-                        width: ScreenUtil().screenWidth,
-                        height: 130,
-                        decoration: BoxDecoration(
-                          color: ColorPallete.bgColor,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(20.r),
-                            bottomRight: Radius.circular(20.r),
-                          ),
-                        ),
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Flexible(
+                          child: Container(
+                            alignment: Alignment.center,
+                            padding: EdgeInsets.only(bottom: 20.h),
+                            width: ScreenUtil().screenWidth,
+                            height: 130,
+                            decoration: BoxDecoration(
+                              color: ColorPallete.bgColor,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(20.r),
+                                bottomRight: Radius.circular(20.r),
+                              ),
+                            ),
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Text(
-                                    controller.userData.data!.userName!,
-                                    style: GoogleFonts.poppins(
-                                      color: Colors.white,
-                                      fontSize: 20.sp,
-                                      fontWeight: FontWeight.w400,
-                                    ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        controller.userData.data!.userName!,
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.white,
+                                          fontSize: 20.sp,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                      Text(
+                                        controller
+                                            .userData.data!.userAsalSekolah!,
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.white,
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    controller.userData.data!.userAsalSekolah!,
-                                    style: GoogleFonts.poppins(
-                                      color: Colors.white,
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w400,
+                                  SizedBox(
+                                    width: 80.w,
+                                    height: 80.h,
+                                    child: CircleAvatar(
+                                      backgroundImage: NetworkImage(
+                                        controller.userData.data!.userFoto!,
+                                      ),
+                                      child: FadeInImage(
+                                        placeholder:
+                                            AssetImage('assets/img/avatar.png'),
+                                        fit: BoxFit.contain,
+                                        imageErrorBuilder:
+                                            (BuildContext context,
+                                                Object exception,
+                                                StackTrace? stackTrace) {
+                                          return Image.asset(
+                                              'assets/img/avatar.png');
+                                        },
+                                        image: NetworkImage(
+                                          controller.userData.data!.userFoto!,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ],
                               ),
-                              SizedBox(
-                                width: 80.w,
-                                height: 80.h,
-                                child: CircleAvatar(
-                                  backgroundImage: NetworkImage(
-                                    controller.userData.data!.userFoto!,
-                                  ),
-                                  child: FadeInImage(
-                                    placeholder:
-                                        AssetImage('assets/img/avatar.png'),
-                                    fit: BoxFit.contain,
-                                    imageErrorBuilder: (BuildContext context,
-                                        Object exception,
-                                        StackTrace? stackTrace) {
-                                      return Image.asset(
-                                          'assets/img/avatar.png');
-                                    },
-                                    image: NetworkImage(
-                                      controller.userData.data!.userFoto!,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
+                        Flexible(
+                          child: Container(
+                            width: ScreenUtil().screenWidth,
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 15.w, vertical: 20.h),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 15.h, horizontal: 20.w),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.25),
+                                  blurRadius: 7,
+                                  offset: Offset(0, 0),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Identitas Diri',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 30.0.h,
+                                ),
+                                Text(
+                                  'Nama Lengkap',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12.sp,
+                                    color: ColorPallete.subTitle,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                Text(
+                                  controller.userData.data!.userName!,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 15.0.h,
+                                ),
+                                Text(
+                                  'Email',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12.sp,
+                                    color: ColorPallete.subTitle,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                Text(
+                                  controller.userData.data!.userEmail!,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 15.0.h,
+                                ),
+                                Text(
+                                  'Jenis Kelamin',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12.sp,
+                                    color: ColorPallete.subTitle,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                Text(
+                                  controller.userData.data!.userGender!,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 15.0.h,
+                                ),
+                                Text(
+                                  'Kelas',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12.sp,
+                                    color: ColorPallete.subTitle,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                Text(
+                                  controller.userData.data!.kelas!,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 15.0.h,
+                                ),
+                                Text(
+                                  'Sekolah',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12.sp,
+                                    color: ColorPallete.subTitle,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                Text(
+                                  controller.userData.data!.userAsalSekolah!,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            controller.signOut();
+                          },
+                          child: Container(
+                            width: ScreenUtil().screenWidth,
+                            height: 50.h,
+                            margin: EdgeInsets.only(left: 16.w, top: 10.h),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.25),
+                                  blurRadius: 6,
+                                  offset: Offset(0, 0),
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  color: Colors.red,
+                                  icon: Icon(Icons.logout),
+                                  onPressed: () {
+                                    // Implement logout functionality here
+                                  },
+                                ),
+                                Text(
+                                  "Logout",
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16.sp,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    Flexible(
-                      child: Container(
-                        width: ScreenUtil().screenWidth,
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 15.w, vertical: 20.h),
-                        padding: EdgeInsets.symmetric(
-                            vertical: 15.h, horizontal: 20.w),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.25),
-                              blurRadius: 7,
-                              offset: Offset(0, 0),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Identitas Diri',
-                              style: GoogleFonts.poppins(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 30.0.h,
-                            ),
-                            Text(
-                              'Nama Lengkap',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12.sp,
-                                color: ColorPallete.subTitle,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Text(
-                              controller.userData.data!.userName!,
-                              style: GoogleFonts.poppins(
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15.0.h,
-                            ),
-                            Text(
-                              'Email',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12.sp,
-                                color: ColorPallete.subTitle,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Text(
-                              controller.userData.data!.userEmail!,
-                              style: GoogleFonts.poppins(
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15.0.h,
-                            ),
-                            Text(
-                              'Jenis Kelamin',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12.sp,
-                                color: ColorPallete.subTitle,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Text(
-                              controller.userData.data!.userGender!,
-                              style: GoogleFonts.poppins(
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15.0.h,
-                            ),
-                            Text(
-                              'Kelas',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12.sp,
-                                color: ColorPallete.subTitle,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Text(
-                              controller.userData.data!.kelas!,
-                              style: GoogleFonts.poppins(
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15.0.h,
-                            ),
-                            Text(
-                              'Sekolah',
-                              style: GoogleFonts.poppins(
-                                fontSize: 12.sp,
-                                color: ColorPallete.subTitle,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Text(
-                              controller.userData.data!.userAsalSekolah!,
-                              style: GoogleFonts.poppins(
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        controller.signOut();
-                      },
-                      child: Container(
-                        width: ScreenUtil().screenWidth,
-                        height: 50.h,
-                        margin: EdgeInsets.only(left: 16.w, top: 10.h),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.25),
-                              blurRadius: 6,
-                              offset: Offset(0, 0),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            IconButton(
-                              color: Colors.red,
-                              icon: Icon(Icons.logout),
-                              onPressed: () {
-                                // Implement logout functionality here
-                              },
-                            ),
-                            Text(
-                              "Logout",
-                              style: GoogleFonts.poppins(
-                                color: Colors.red,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 16.sp,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                    SizedBox(
+                      height: 100.0.h,
                     ),
                   ],
                 ),
