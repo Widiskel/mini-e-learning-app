@@ -54,7 +54,7 @@ class GridViewShimmer extends StatelessWidget {
                   children: [
                     Container(
                       height: 36.h,
-                      width: 36.w,
+                      width: 36.h,
                       margin: EdgeInsets.only(top: 10.h, left: 15.w),
                       decoration: BoxDecoration(
                         color: ColorPallete.iconBg,

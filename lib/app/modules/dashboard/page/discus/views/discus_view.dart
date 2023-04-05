@@ -129,8 +129,8 @@ class DiscusView extends GetView<DiscusController> {
                 }
               },
               child: Container(
-                height: 30.h,
-                width: 30.w,
+                height: 35.h,
+                width: 35.h,
                 decoration: BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.circular(15.r),

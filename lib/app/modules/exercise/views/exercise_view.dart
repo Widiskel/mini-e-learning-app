@@ -95,7 +95,7 @@ class ExerciseView extends GetView<ExerciseController> {
                                         children: [
                                           Container(
                                             height: 36.h,
-                                            width: 36.w,
+                                            width: 36.h,
                                             margin: EdgeInsets.only(
                                                 top: 10.h, left: 15.w),
                                             decoration: const BoxDecoration(
