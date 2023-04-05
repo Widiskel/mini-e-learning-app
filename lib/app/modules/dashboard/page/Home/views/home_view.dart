@@ -95,7 +95,7 @@ class HomeView extends GetView<HomeController> {
                           children: [
                             Container(
                               margin: const EdgeInsets.all(20),
-                              width: Get.width * 0.3,
+                              width: 107,
                               child: Text(
                                 'Mau kerjain latihan soal apa hari ini ?',
                                 style: GoogleFonts.poppins(

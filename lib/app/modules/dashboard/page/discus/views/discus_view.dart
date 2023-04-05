@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mini_e_learning/app/data/models/chat_model.dart';
 import 'package:mini_e_learning/app/data/utils/color_pallete.dart';
 import 'package:mini_e_learning/app/widget/chat_bubble.dart';
@@ -14,8 +15,12 @@ class DiscusView extends GetView<DiscusController> {
     return Scaffold(
       backgroundColor: ColorPallete.bgColorWhite,
       appBar: AppBar(
-        title: const Text('DiscusView'),
-        centerTitle: true,
+        backgroundColor: ColorPallete.bgColor,
+        title: Text(
+          'Diskusi Soal',
+          style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w700),
+        ),
+        centerTitle: false,
       ),
       body: RefreshIndicator(
         onRefresh: () => controller.refreshData(),

@@ -56,235 +56,244 @@ class ProfileView extends GetView<ProfileController> {
           ),
           GetBuilder<ProfileController>(
             builder: (controller) {
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.only(bottom: 20),
-                    width: Get.width,
-                    height: 150,
-                    decoration: BoxDecoration(
-                      color: ColorPallete.bgColor,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
-                      ),
-                    ),
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
+              return SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Flexible(
+                      child: Container(
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.only(bottom: 20),
+                        width: Get.width,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: ColorPallete.bgColor,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20),
+                          ),
+                        ),
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text(
-                                controller.userData.data!.userName!,
-                                style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    controller.userData.data!.userName!,
+                                    style: GoogleFonts.poppins(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                  Text(
+                                    controller.userData.data!.userAsalSekolah!,
+                                    style: GoogleFonts.poppins(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Text(
-                                controller.userData.data!.userAsalSekolah!,
-                                style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
+                              SizedBox(
+                                width: 80,
+                                height: 80,
+                                child: CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                    controller.userData.data!.userFoto!,
+                                  ),
+                                  child: FadeInImage(
+                                    placeholder:
+                                        AssetImage('assets/img/avatar.png'),
+                                    fit: BoxFit.contain,
+                                    imageErrorBuilder: (BuildContext context,
+                                        Object exception,
+                                        StackTrace? stackTrace) {
+                                      return Image.asset(
+                                          'assets/img/avatar.png');
+                                    },
+                                    image: NetworkImage(
+                                      controller.userData.data!.userFoto!,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(
-                            width: 80,
-                            height: 80,
-                            child: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                controller.userData.data!.userFoto!,
-                              ),
-                              child: FadeInImage(
-                                placeholder:
-                                    AssetImage('assets/img/avatar.png'),
-                                fit: BoxFit.contain,
-                                imageErrorBuilder: (BuildContext context,
-                                    Object exception, StackTrace? stackTrace) {
-                                  return Image.asset('assets/img/avatar.png');
-                                },
-                                image: NetworkImage(
-                                  controller.userData.data!.userFoto!,
-                                ),
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: Container(
+                        width: Get.width,
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 15, horizontal: 20),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.25),
+                              blurRadius: 7,
+                              offset: Offset(0, 0),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Identitas Diri',
+                              style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
-                          ),
-                        ],
+                            const SizedBox(
+                              height: 30.0,
+                            ),
+                            Text(
+                              'Nama Lengkap',
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                color: ColorPallete.subTitle,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            Text(
+                              controller.userData.data!.userName!,
+                              style: GoogleFonts.poppins(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 15.0,
+                            ),
+                            Text(
+                              'Email',
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                color: ColorPallete.subTitle,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            Text(
+                              controller.userData.data!.userEmail!,
+                              style: GoogleFonts.poppins(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 15.0,
+                            ),
+                            Text(
+                              'Jenis Kelamin',
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                color: ColorPallete.subTitle,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            Text(
+                              controller.userData.data!.userGender!,
+                              style: GoogleFonts.poppins(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 15.0,
+                            ),
+                            Text(
+                              'Kelas',
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                color: ColorPallete.subTitle,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            Text(
+                              controller.userData.data!.kelas!,
+                              style: GoogleFonts.poppins(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 15.0,
+                            ),
+                            Text(
+                              'Sekolah',
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                color: ColorPallete.subTitle,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            Text(
+                              controller.userData.data!.userAsalSekolah!,
+                              style: GoogleFonts.poppins(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: Get.width,
-                    margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 15, horizontal: 20),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.25),
-                          blurRadius: 7,
-                          offset: Offset(0, 0),
+                    GestureDetector(
+                      onTap: () {
+                        controller.signOut();
+                      },
+                      child: Container(
+                        width: Get.width,
+                        height: 50,
+                        margin: EdgeInsets.only(left: 16, top: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.25),
+                              blurRadius: 6,
+                              offset: Offset(0, 0),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Identitas Diri',
-                          style: GoogleFonts.poppins(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 30.0,
-                        ),
-                        Text(
-                          'Nama Lengkap',
-                          style: GoogleFonts.poppins(
-                            fontSize: 12,
-                            color: ColorPallete.subTitle,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        Text(
-                          controller.userData.data!.userName!,
-                          style: GoogleFonts.poppins(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 15.0,
-                        ),
-                        Text(
-                          'Email',
-                          style: GoogleFonts.poppins(
-                            fontSize: 12,
-                            color: ColorPallete.subTitle,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        Text(
-                          controller.userData.data!.userEmail!,
-                          style: GoogleFonts.poppins(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 15.0,
-                        ),
-                        Text(
-                          'Jenis Kelamin',
-                          style: GoogleFonts.poppins(
-                            fontSize: 12,
-                            color: ColorPallete.subTitle,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        Text(
-                          controller.userData.data!.userGender!,
-                          style: GoogleFonts.poppins(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 15.0,
-                        ),
-                        Text(
-                          'Kelas',
-                          style: GoogleFonts.poppins(
-                            fontSize: 12,
-                            color: ColorPallete.subTitle,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        Text(
-                          controller.userData.data!.kelas!,
-                          style: GoogleFonts.poppins(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 15.0,
-                        ),
-                        Text(
-                          'Sekolah',
-                          style: GoogleFonts.poppins(
-                            fontSize: 12,
-                            color: ColorPallete.subTitle,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        Text(
-                          controller.userData.data!.userAsalSekolah!,
-                          style: GoogleFonts.poppins(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      controller.signOut();
-                    },
-                    child: Container(
-                      width: Get.width,
-                      height: 50,
-                      margin: EdgeInsets.only(left: 16, top: 10),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.25),
-                            blurRadius: 6,
-                            offset: Offset(0, 0),
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          IconButton(
-                            color: Colors.red,
-                            icon: Icon(Icons.logout),
-                            onPressed: () {
-                              // Implement logout functionality here
-                            },
-                          ),
-                          Text(
-                            "Logout",
-                            style: GoogleFonts.poppins(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            IconButton(
                               color: Colors.red,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 16,
+                              icon: Icon(Icons.logout),
+                              onPressed: () {
+                                // Implement logout functionality here
+                              },
                             ),
-                          ),
-                        ],
+                            Text(
+                              "Logout",
+                              style: GoogleFonts.poppins(
+                                color: Colors.red,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               );
             },
           )

@@ -37,7 +37,7 @@ class BiodataView extends GetView<BiodataController> {
         children: [
           Container(
             height: 30,
-            width: Get.width,
+            width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: const BorderRadius.only(

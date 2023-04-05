@@ -47,7 +47,7 @@ class BiodataController extends GetxController {
           await userRepository.registerUser(userRegistration);
       if (userData != null) {
         SuccessSnack.show(message: 'Registrasi Berhasil');
-        Get.toNamed(Routes.dashboard);
+        Get.offAllNamed(Routes.dashboard, arguments: userData);
       } else {
         ErrorSnack.show(message: 'Registrasi gagal');
       }
